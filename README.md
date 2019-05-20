@@ -1,2 +1,33 @@
 # IOStream
 This is about java IO
+
+path 为文件路径
+字节输入输出流
+InputStream is=new InputStream(new FileInputStream(path));
+OutPutStream os=new OutputStream(new FileOutputStream(path));
+
+字符输入输出流
+Reader r=new FileReader(path);
+
+Wrider w=new FileWrider(path)
+
+效率更高，相当于给InputStream穿上了外衣。
+
+字节输入输出缓冲流
+
+BufferInputStream bis=new BufferInputStream(new FileInputStream(path));
+
+BufferOutputStream bos=new BufferOutputStream(new FileOutputStream(path));
+
+字符缓冲流：
+
+BufferReader br=new BufferReader(new FileReader(path));
+
+BufferWriter bw=new BufferWriter(new FileWriter(path));
+
+字符字节转换流：可以按指定的字符编码进行读取操作：注意：只对文件操作。
+
+InputStreamReader isr=InputStreamReader(new FileInputStream(path),"utf8")
+
+OutputStreamWriter osw=OutputStreanWriter(new FileOutputStream(path),"GBK")
+
