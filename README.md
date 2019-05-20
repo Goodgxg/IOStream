@@ -9,7 +9,7 @@ OutPutStream os=new OutputStream(new FileOutputStream(path));
 字符输入输出流
 Reader r=new FileReader(path);
 
-Wrider w=new FileWrider(path)
+Writer w=new FileWrider(path)
 
 效率更高，相当于给InputStream穿上了外衣。
 
