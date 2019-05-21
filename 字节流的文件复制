@@ -33,4 +33,10 @@
  字节流复制用的字节流 上面的代码；字符流用的是以下内容
  ReaderStream rs=null;
  WriterStream ws=null;
- rs=new FileWriter
+ rs=new FileWrite(path,true)//path 为路径
+ ws=new FileReader(path)
+char[] data=new char[100];
+int len=0;
+while((len=rs.read(date))!=-1) {
+	ws.write(date, 0, len);
+}
