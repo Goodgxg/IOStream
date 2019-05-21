@@ -1,0 +1,52 @@
+字符字节转换流：
+InputstreamReader OutputStreamWriter
+主要针对文本文件进行操作。保留了字符流在操作文本的便利性。同时也保留了字节流在数据传输的稳定性。它可以用指定的字符集来进行读写操作。
+我们看下面代码：
+import java.io.*;
+
+/**
+ * 叫做字节字符转换流，主要针对文本文件进行操作。保留了字符流在操作文本的便利性
+ * 同时也保留了字节流在数据传输是的稳定性。
+ * InpurStreamReader
+ * OutPutStreamWriter
+ * 什么情况使用转换流？
+ * 当需要已指定的字符集读取某个文件的时候。
+ * 当需要将数据以指定的字符集写入某个文件的时候。
+ * @author GXG
+ *
+ */
+public class ISROSW {
+	public static void main(String[] args) {
+		inputStreamReader();
+		outputStreamWriter();
+	}
+	public static void inputStreamReader() {
+		/**
+		 * 实例化一个inputstreamreader对象
+		 * 在实例化的时候，需要有一个inputstream对象完成实例化
+		 * 同时在实例化的时候，需要一个字符集来确定通过什么字符集来读取数据。
+		 */
+		try(InputStreamReader isr=new InputStreamReader(new FileInputStream("src\\a.txt"),"utf8") ){//可指定字符集
+			//读取一个文本
+			char[] array=new char[100];
+			int len=0;
+			while((len=isr.read(array))!=-1) {
+				System.out.println(new String(array,0,len));
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
+	}
+	public static void outputStreamWriter() {
+		try(OutputStreamWriter osw=new OutputStreamWriter(new FileOutputStream("src\\b",true), "utf-8")){
+			osw.write("你好，世界");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}
+有兴趣的可以尝试着将一个GBK编码的读入到一个UTF编码的文件中（汉字不能出现乱码）
+
+
+
+
