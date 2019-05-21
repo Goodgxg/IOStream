@@ -1,0 +1,36 @@
+	private static void copyFile(File oldfile,File newfile) {
+		InputStream ins=null;
+		OutputStream ops=null;
+		try {
+			ins=new FileInputStream(oldfile);
+			ops=new FileOutputStream(newfile,true);//true的含义是往文件后面追加内容，若不写默认false，会覆盖之前的内容。
+			byte[] date=new byte[1024];
+			int len=0;//记录的读取长度
+			while((len=ins.read(date))!=-1) {//当返回-1时说明文件已经读完
+				ops.write(date, 0, len);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally {//以下是关闭流操作。
+			if(ins!=null)
+			try {
+				ins.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			if(ops!=null)
+				try {
+					ops.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+		}
+		
+	}
+  
+  字符流和字节流的文件操作都差不多，一个用字节数组接收，一个用字符数组接收。当然用的流也不一样
+ 字节流复制用的字节流 上面的代码；字符流用的是以下内容
+ ReaderStream rs=null;
+ WriterStream ws=null;
+ rs=new FileWriter
